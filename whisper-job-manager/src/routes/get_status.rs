@@ -1,22 +1,11 @@
 use std::sync::Arc;
 
 use actix_web::{get, web, HttpResponse, Responder};
-use serde::{Deserialize, Serialize};
 use tokio::sync::Mutex;
-use uuid::Uuid;
+use whisper_job_manager_models::{GetStatusRequest, GetStatusResponse};
 
-use crate::scheduler::{metadata::JobMetadata, status::JobStatus, Scheduler};
+use crate::scheduler::Scheduler;
 
-#[derive(Debug, Deserialize)]
-pub struct GetStatusRequest {
-    pub uuid: Uuid,
-}
-
-#[derive(Debug, Serialize)]
-pub struct GetStatusResponse {
-    pub status: JobStatus,
-    pub metadata: JobMetadata,
-}
 
 #[get("/getStatus")]
 pub async fn get_status(

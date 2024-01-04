@@ -4,15 +4,10 @@ use tokio::process::{Child, Command};
 use uuid::Uuid;
 
 use anyhow::{Error, Result};
+use whisper_job_manager_models::{job_metadata::JobMetadata, job_status::JobStatus};
 
-use self::{
-    metadata::JobMetadata,
-    status::JobStatus,
-    strategy::{SchedulerStrategy, SimpleSchedulerStrategy},
-};
+use self::strategy::{SchedulerStrategy, SimpleSchedulerStrategy};
 
-pub mod metadata;
-pub mod status;
 pub mod strategy;
 
 const DEFAULT_CAPACTITY: usize = 32;

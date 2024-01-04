@@ -6,28 +6,19 @@ use std::{
 
 use actix_web::{post, web, HttpResponse, Responder};
 use anyhow::{Error, Result};
-use serde::{Deserialize, Serialize};
 use tokio::{process::Command, sync::Mutex};
 use uuid::Uuid;
+use whisper_job_manager_models::{NewJobRequest, job_metadata::JobMetadata, NewJobResponse};
 
 use crate::{
     config::Config,
     constants::TMP_DIR,
-    scheduler::{metadata::JobMetadata, Scheduler},
+    scheduler::Scheduler,
 };
 
 const STDOUT_FILE: &'static str = "out.txt";
 const STDERR_FILE: &'static str = "err.txt";
 
-#[derive(Deserialize)]
-pub struct NewJobRequest {
-    pub path: String,
-}
-
-#[derive(Serialize)]
-struct NewJobResponse {
-    pub uuid: Uuid,
-}
 
 async fn setup_workspace(uuid: Uuid) -> tokio::io::Result<(PathBuf, PathBuf, PathBuf)> {
     // Create directory for this job

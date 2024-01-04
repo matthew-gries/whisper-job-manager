@@ -1,18 +1,11 @@
 use std::sync::Arc;
 
 use actix_web::{post, web, HttpResponse, Responder};
-use serde::Deserialize;
 use tokio::sync::Mutex;
-use uuid::Uuid;
+use whisper_job_manager_models::CancelJobRequest;
 
 use crate::{constants::TMP_DIR, scheduler::Scheduler};
 
-/// Request object for canceling a job.
-#[derive(Deserialize)]
-pub struct CancelJobRequest {
-    /// The UUID of the job.
-    pub uuid: Uuid,
-}
 
 /// Request handler for canceling a job.
 #[post("/cancelJob")]

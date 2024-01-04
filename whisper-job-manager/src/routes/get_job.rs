@@ -2,16 +2,11 @@ use std::{ffi::OsString, path::PathBuf, sync::Arc};
 
 use actix_files::NamedFile;
 use actix_web::{get, web, Either, HttpResponse, Responder};
-use serde::Deserialize;
 use tokio::sync::Mutex;
-use uuid::Uuid;
+use whisper_job_manager_models::GetJobRequest;
 
 use crate::{constants::TMP_DIR, scheduler::Scheduler};
 
-#[derive(Deserialize)]
-pub struct GetJobRequest {
-    pub uuid: Uuid,
-}
 
 #[get("/getJob")]
 pub async fn get_job(

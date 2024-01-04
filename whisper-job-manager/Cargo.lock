@@ -1457,7 +1457,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7ab9b36309365056cd639da3134bf87fa8f3d86008abf99e612384a6eecd459f"
 
 [[package]]
-name = "whisper-job-scheduler"
+name = "whisper-job-manager"
 version = "0.1.0"
 dependencies = [
  "actix-files",
@@ -1471,6 +1471,17 @@ dependencies = [
  "serde",
  "serde_json",
  "tokio",
+ "uuid",
+ "whisper-job-manager-models",
+]
+
+[[package]]
+name = "whisper-job-manager-models"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "serde_json",
  "uuid",
 ]
 

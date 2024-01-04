@@ -1,17 +1,11 @@
 use std::sync::Arc;
 
 use actix_web::{get, web, HttpResponse, Responder};
-use serde::Serialize;
 use tokio::sync::Mutex;
+use whisper_job_manager_models::{GetStatusResponse, GetAllStatusesResponse};
 
 use crate::scheduler::Scheduler;
 
-use super::get_status::GetStatusResponse;
-
-#[derive(Debug, Serialize)]
-pub struct GetAllStatusesResponse {
-    pub statuses: Vec<GetStatusResponse>,
-}
 
 #[get("/getAllStatuses")]
 pub async fn get_all_statuses(sch: web::Data<Arc<Mutex<Scheduler>>>) -> impl Responder {
