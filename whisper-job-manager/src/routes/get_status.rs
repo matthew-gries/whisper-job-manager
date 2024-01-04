@@ -6,7 +6,6 @@ use whisper_job_manager_models::{GetStatusRequest, GetStatusResponse};
 
 use crate::scheduler::Scheduler;
 
-
 #[get("/getStatus")]
 pub async fn get_status(
     query: web::Query<GetStatusRequest>,

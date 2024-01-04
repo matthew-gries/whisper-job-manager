@@ -2,10 +2,9 @@ use std::sync::Arc;
 
 use actix_web::{get, web, HttpResponse, Responder};
 use tokio::sync::Mutex;
-use whisper_job_manager_models::{GetStatusResponse, GetAllStatusesResponse};
+use whisper_job_manager_models::{GetAllStatusesResponse, GetStatusResponse};
 
 use crate::scheduler::Scheduler;
-
 
 #[get("/getAllStatuses")]
 pub async fn get_all_statuses(sch: web::Data<Arc<Mutex<Scheduler>>>) -> impl Responder {

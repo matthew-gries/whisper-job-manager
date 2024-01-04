@@ -7,7 +7,6 @@ use whisper_job_manager_models::GetJobRequest;
 
 use crate::{constants::TMP_DIR, scheduler::Scheduler};
 
-
 #[get("/getJob")]
 pub async fn get_job(
     query: web::Query<GetJobRequest>,

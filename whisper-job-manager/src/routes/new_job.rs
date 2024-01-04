@@ -8,17 +8,12 @@ use actix_web::{post, web, HttpResponse, Responder};
 use anyhow::{Error, Result};
 use tokio::{process::Command, sync::Mutex};
 use uuid::Uuid;
-use whisper_job_manager_models::{NewJobRequest, job_metadata::JobMetadata, NewJobResponse};
+use whisper_job_manager_models::{job_metadata::JobMetadata, NewJobRequest, NewJobResponse};
 
-use crate::{
-    config::Config,
-    constants::TMP_DIR,
-    scheduler::Scheduler,
-};
+use crate::{config::Config, constants::TMP_DIR, scheduler::Scheduler};
 
 const STDOUT_FILE: &'static str = "out.txt";
 const STDERR_FILE: &'static str = "err.txt";
-
 
 async fn setup_workspace(uuid: Uuid) -> tokio::io::Result<(PathBuf, PathBuf, PathBuf)> {
     // Create directory for this job

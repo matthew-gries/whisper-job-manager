@@ -6,7 +6,6 @@ use whisper_job_manager_models::CancelJobRequest;
 
 use crate::{constants::TMP_DIR, scheduler::Scheduler};
 
-
 /// Request handler for canceling a job.
 #[post("/cancelJob")]
 pub async fn cancel_job(
