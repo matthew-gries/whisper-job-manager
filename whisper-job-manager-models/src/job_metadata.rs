@@ -1,10 +1,10 @@
 use std::ffi::OsString;
 
 use chrono::Utc;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 /// Metadata on a job, including information about the file
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct JobMetadata {
     pub filename: OsString,
     pub created_at: chrono::DateTime<Utc>,
