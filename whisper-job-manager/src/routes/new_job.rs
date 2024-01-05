@@ -162,7 +162,7 @@ pub async fn new_job(
         super::cleanup_workspace(workspace_path).await;
         return HttpResponse::InternalServerError().into();
     }
-    let filename = filename.unwrap().to_os_string();
+    let filename = PathBuf::from(filename.unwrap().to_os_string());
 
     let metadata = JobMetadata::init_for_queued_job(filename);
 
