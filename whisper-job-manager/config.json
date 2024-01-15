@@ -1,5 +1,5 @@
 {
-  "videoStoragePath": "",
-  "host": "",
+  "videoStoragePath": "/opt/media",
+  "host": "0.0.0.0",
   "port": 8080
 }

@@ -41,7 +41,7 @@ fn get_full_path_of_file_to_transcribe<P: AsRef<Path>>(
     file_path_str: &str,
 ) -> Result<PathBuf> {
     let mut path_to_transcribe = PathBuf::from(storage_canonical_path.as_ref());
-    path_to_transcribe.push(file_path_str.clone());
+    path_to_transcribe.push(file_path_str);
 
     if !path_to_transcribe.exists() {
         return Err(Error::msg(format!(
